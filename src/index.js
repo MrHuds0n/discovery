@@ -5,7 +5,7 @@ const API = 'https://api.discoverygc.org/api'
 export default class {
 	constructor(options) {
 		this.options = options || {}
-		this.api = options.api || API
+		this.api = this.options.api || API
 
 		if(this.options.key) {
 			this.key = this.options.key
@@ -15,7 +15,14 @@ export default class {
 		}
 	}
 
-	players(callback) {
+	players(callback, timeout) {
+		let timeoutHandle
+		if(timeout) {
+			timeoutHandle = setTimeout(() => {
+				throw new Error('Operation timed out.')
+			}, timeout)	
+		}
+
 		return fetch(`${this.api}/Online/GetPlayers/${this.key}`)
 			.then(res => res.json())
 			.then(json => {
@@ -40,6 +47,8 @@ export default class {
 				}
 			})
 			.then(data => {
+				clearTimeout(timeoutHandle)
+
 				if(callback) {
 					callback(data)
 				}
@@ -47,7 +56,14 @@ export default class {
 			})
 	}
 
-	factions(callback) {
+	factions(callback, timeout) {
+		let timeoutHandle
+		if(timeout) {
+			timeoutHandle = setTimeout(() => {
+				throw new Error('Operation timed out.')
+			}, timeout)	
+		}
+
 		return fetch(`${this.api}/Online/GetFactionSummary/${this.key}`)
 			.then(res => res.json())
 			.then(json => {
@@ -92,6 +108,8 @@ export default class {
 				}
 			})
 			.then(data => {
+				clearTimeout(timeoutHandle)
+
 				if(callback) {
 					callback(data)
 				}
@@ -99,8 +117,16 @@ export default class {
 			})
 	}
 
-	allPlayers(page, callback) {
+	allPlayers(page, callback, timeout) {
 		if(!page) throw new Error('No page specified (page is mandatory).')
+
+		let timeoutHandle
+		if(timeout) {
+			timeoutHandle = setTimeout(() => {
+				throw new Error('Operation timed out.')
+			}, timeout)	
+		}
+
 		return fetch(`${this.api}/Online/GetAllPlayers/${this.key}/${page}`)
 			.then(res => res.json())
 			.then(json => {
@@ -124,6 +150,8 @@ export default class {
 				}
 			})	
 			.then(data => {
+				clearTimeout(timeoutHandle)
+
 				if(callback) {
 					callback(data)
 				}

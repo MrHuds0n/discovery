@@ -6,6 +6,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "eslint": "^4.10.0"
@@ -20,7 +21,7 @@
   },
   "scripts": {
     "start": "node index.js",
-	"test": "node test/test.js",
+    "test": "node test/test.js",
     "build": "babel src -d lib"
   }
 }
