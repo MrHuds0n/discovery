@@ -1,0 +1,26 @@
+{
+  "name": "discovery",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.10.0"
+  },
+  "dependencies": {
+    "node-fetch": "^1.7.3"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "scripts": {
+    "start": "node index.js",
+	"test": "node test/test.js",
+    "build": "babel src -d lib"
+  }
+}
