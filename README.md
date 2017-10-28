@@ -40,6 +40,7 @@ const disco = new Disco(options)
 When creating the instance of `disco` you can specify options in the constructor.
 
 - `key`: Your api key. This is mandatory.
+- `api`: Should the api URL ever change, you can specify a different one.
 - `noFormat`: This will make every function return unformatted Discovery API object keys. These do not adhere to StandardJS style guidelines for naming functions.
 
 ### Functions
