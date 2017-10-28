@@ -48,7 +48,7 @@ For unformatted outputs go look up the Discovery API docs.
 
 All functions take callback and timeout (in ms) as their last two arguments.
 
-If callback is undefined returns the data, otherwise calls the callback with data as the first argument.
+If callback is undefined returns a Promise which resolves to the data, otherwise calls the callback with data as the first argument.
 
 All data related to time (aside from the timestamps) is provided as Strings, you need to parse it yourself.
 
